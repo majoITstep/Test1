@@ -9,8 +9,33 @@ namespace Test1
     class Otazka
     {
         public string Text;
-        public Moznost[] Moznosti;
+        private Moznost[] moznosti;
+        public Moznost[] Moznosti
+        {
+            get
+            {
+                return moznosti;
+            }
+            set
+            {
+                moznosti = value;
+            }
+        }
+
         public Moznost[] Odpovede;
+
+        public void VypisOtazku()
+        {
+            Console.WriteLine();
+            Console.WriteLine(Text);
+            Console.WriteLine("----------------");
+
+            foreach (Moznost m in moznosti)
+
+            {
+                Console.WriteLine(m.Text);
+            }
+        }
     }
 
     class SingleOtazka : Otazka

@@ -10,6 +10,9 @@ namespace Test1
     {
         static void Main(string[] args)
         {
+            Quiz q = new Quiz();
+            q.SpustQuiz();
+
         }
     }
 }
