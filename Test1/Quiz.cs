@@ -23,7 +23,7 @@ namespace Test1
                 int index;
                 do
                 {
-                    index = r.Next(2);
+                    index = r.Next(3);
                 }
 
                 while (vybraneCisla.Contains(index));
@@ -46,10 +46,20 @@ namespace Test1
                     uzivOdpoved = Console.ReadLine();
                 }
                 while (!skontrolujVstup(uzivOdpoved, o, out poleUzivIndexov));
-                o.Odpovede
+                o.Odpovede = new Moznost[poleUzivIndexov.Length];
+                for (int i = 0; i<poleUzivIndexov.Length;i++)
+                {
 
+                    o.Odpovede[i] = o.Moznosti[poleUzivIndexov[i] - 1];
 
+                }
             }
+            int body = 0;
+            foreach (Otazka o in otazky)
+            {
+                body += o.VyhodnotOtazku();
+            }
+            Console.WriteLine("Dostali ste{0}", body);
 
             Console.ReadLine();
         }
@@ -62,6 +72,7 @@ namespace Test1
             {
                 bool res = jeCisloAJeVindexe(uzivVstup, otazka, out index);
                 poleIndexu = new int[] { index };
+                if (!res) Console.WriteLine("Zly vstup");
                 return res;
             }
             
@@ -91,7 +102,7 @@ namespace Test1
             }
             else
             {
-                return (index > 0 && index < otazka.Moznosti.Length);
+                return (index > 0 && index < otazka.Moznosti.Length+1);
             }
         }
     }
